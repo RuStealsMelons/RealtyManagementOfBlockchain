@@ -63,6 +63,20 @@ contract PropertyManagementSystem {
         maintenancePersonnelKeys.push(id);
     }
 
+    // 登录
+    function login(address addr) public view returns(string role) {
+        if(homeowners[addr].id != address(0) ){
+            return("Homeowner");
+        }else if(propertyManagers[addr].id != address(0)) {
+            return("PropertyManager");
+        }else if(maintenancePersonnels[addr].id != address(0)){
+            return("MaintenancePersonnel");
+        }else{
+            return("找不到当前用户");
+        }
+    }
+
+
     // 每个人拥有1票
     mapping(address => uint256) public fromVoters;
     // 被选举者
