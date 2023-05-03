@@ -4,6 +4,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import index from '../views/index.vue'
 import login from '../views/login.vue'
 import register from '../views/register.vue'
+import submitRepair from '../views/submitRepair.vue'
 
 const routes = [
   {
@@ -14,6 +15,16 @@ const routes = [
     path: "/index",
     name: 'index',
     component: index,
+    children: [
+        {
+          path: 'submitRepair',
+          component: submitRepair,
+        },
+        // {
+        //   path: 'edit',
+        //   component: Edit,
+        // }
+    ]
   },
   {
     path: "/login",

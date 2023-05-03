@@ -50,13 +50,13 @@ contract RepairRequestContract {
     event RequestStatusUpdated(uint256 indexed requestId, string newStatus);
 
     // 提交维修请求：业主可以通过调用该合约的方法提交维修请求，包括维修类型、描述、紧急程度等信息。
-    function submitRepairRequest(string memory _repairType, string memory _description, uint256 _urgency) public {
+    function submitRepairRequest(address _owner, string memory _repairType, string memory _description, uint256 _urgency) public {
         RepairRequest memory newRequest = RepairRequest({
-            owner: msg.sender,
+            owner: _owner,
             repairType: _repairType,
             description: _description,
             urgency: _urgency,
-            status: "Pending"
+            status: "待处理"
         });
 
         uint256 requestId = repairRequests.push(newRequest) - 1;
@@ -72,7 +72,7 @@ contract RepairRequestContract {
     // 更新请求状态：物业可以更新维修请求的状态，例如分派给维修人员、维修完成等。
     function updateRequestStatus(uint256 _requestId, string memory _newStatus) public {
         require(_requestId < repairRequests.length, "无效的请求 ID");
-        require(msg.sender == repairRequests[_requestId].owner, "只有所有者可以更新请求状态");
+        // require(msg.sender == repairRequests[_requestId].owner, "只有所有者可以更新请求状态");
 
         repairRequests[_requestId].status = _newStatus;
         emit RequestStatusUpdated(_requestId, _newStatus);
