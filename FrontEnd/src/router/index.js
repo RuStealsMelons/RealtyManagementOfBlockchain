@@ -5,6 +5,10 @@ import index from '../views/index.vue'
 import login from '../views/login.vue'
 import register from '../views/register.vue'
 import submitRepair from '../views/submitRepair.vue'
+import repairList from '../views/repairList.vue'
+import work from '../views/work.vue'
+import repair from '../views/repair.vue'
+
 
 const routes = [
   {
@@ -20,10 +24,18 @@ const routes = [
           path: 'submitRepair',
           component: submitRepair,
         },
-        // {
-        //   path: 'edit',
-        //   component: Edit,
-        // }
+        {
+          path: 'repairList',
+          component: repairList,
+        },
+        {
+            path: 'work',
+            component: work,
+        },
+        {
+            path: 'repair',
+            component: repair,
+        }
     ]
   },
   {

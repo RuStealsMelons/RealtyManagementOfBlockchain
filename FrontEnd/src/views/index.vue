@@ -6,8 +6,9 @@ const router = useRouter()
 
 const navList = ref([
     {title: "上报维修", router: "/index/submitRepair", img: "https://pic1.afdiancdn.com/static/img/category/all@2x.png?imageView2/1"},
-    {title: "上报维修", router: "#", img: "https://pic1.afdiancdn.com/user/27f7cea2370d11e8ae8852540025c377/common/fd687405f66425e6308ec683b3fe22a3_w500_h500_s59.jpg?imageView2/1"},
-    {title: "上报维修", router: "#", img: "https://pic1.afdiancdn.com/user/27f7cea2370d11e8ae8852540025c377/common/1a4490c31e402d1f5e95109d0f7cb85e_w500_h500_s33.jpg?imageView2/1"}
+    {title: "维修公示", router: "/index/repairList", img: "https://pic1.afdiancdn.com/user/27f7cea2370d11e8ae8852540025c377/common/fd687405f66425e6308ec683b3fe22a3_w500_h500_s59.jpg?imageView2/1"},
+    {title: "工作分配", router: "/index/work", img: "https://pic1.afdiancdn.com/user/27f7cea2370d11e8ae8852540025c377/common/1a4490c31e402d1f5e95109d0f7cb85e_w500_h500_s33.jpg?imageView2/1"},
+    {title: "维修管理", router: "/index/repair", img: "https://pic1.afdiancdn.com/user/27f7cea2370d11e8ae8852540025c377/common/1a4490c31e402d1f5e95109d0f7cb85e_w500_h500_s33.jpg?imageView2/1"}
 ])
 
 

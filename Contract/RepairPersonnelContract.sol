@@ -22,7 +22,7 @@ contract RepairPersonnelContract {
     }
 
     // 维修人员可以记录维修进展，例如开始维修、维修中、维修完成等。
-    function updateRepairStatus(uint256 _requestId, string memory _newStatus) public {
-        // 更新维修进展的逻辑
-    }
+    // function updateRepairStatus(uint256 _requestId, string memory _newStatus) public {
+    //     // 更新维修进展的逻辑
+    // }
 }

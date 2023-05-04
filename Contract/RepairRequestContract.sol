@@ -42,12 +42,17 @@ contract RepairRequestContract {
         string description; // 维修描述
         uint256 urgency; // 紧急程度
         string status; // 维修状态
+        uint256 timer;
     }
 
     RepairRequest[] public repairRequests;
 
     event RepairRequestCreated(uint256 indexed requestId, address indexed owner);
     event RequestStatusUpdated(uint256 indexed requestId, string newStatus);
+
+    function getCurrentTime() public view returns (uint256) {
+        return block.timestamp;
+    }
 
     // 提交维修请求：业主可以通过调用该合约的方法提交维修请求，包括维修类型、描述、紧急程度等信息。
     function submitRepairRequest(address _owner, string memory _repairType, string memory _description, uint256 _urgency) public {
@@ -56,7 +61,8 @@ contract RepairRequestContract {
             repairType: _repairType,
             description: _description,
             urgency: _urgency,
-            status: "待处理"
+            status: "待处理",
+            timer: getCurrentTime()
         });
 
         uint256 requestId = repairRequests.push(newRequest) - 1;

@@ -34,7 +34,17 @@ async function repairRequests(index){
     return data;
 }
 
+async function updateRequestStatus(_requestId, _newStatus){
+    const {data} = await axios.post("/api5002/WeBASE-Front/trans/handleWithSign", {
+        ...baseFrom,
+        funcName: "updateRequestStatus",
+        funcParam: [_requestId, _newStatus]
+    })
+    return data;
+}
+
 export default{
     submitRepairRequest,
-    repairRequests
+    repairRequests,
+    updateRequestStatus
 }

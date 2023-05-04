@@ -7,7 +7,6 @@ import { ElMessage } from 'element-plus'
 const router = useRouter()
 const privateKey = ref("");
 
-console.log(router)
 
 const loginBtnClick = async () => {
     let data = await PMS.login(privateKey.value)
@@ -23,7 +22,6 @@ const loginBtnClick = async () => {
 
 const toRegister = () => {
     
-    console.log("跳转")
     router.push("register")
 }
 </script>

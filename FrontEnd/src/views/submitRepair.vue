@@ -32,9 +32,7 @@ const urgencys = [
 
 const submit = async () => {
     // _owner, _repairType, _description, _urgency
-    console.log(RRC)
     let data = await RRC.submitRepairRequest(repairFrom.address, repairFrom.repairType, repairFrom.description, repairFrom.urgency)
-    console.log(data)
 }
 
 </script>

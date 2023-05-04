@@ -27,7 +27,6 @@ const fetchKey = async () => {
 }
 
 const registerBtnClick = async () => {
-    // console.log(registerFrom)
     if(registerFrom.role == "" || registerFrom.id == "" || registerFrom.name == "" || registerFrom.contactNumber == ""){
         ElMessage.warning("信息不完整！");
         return;
