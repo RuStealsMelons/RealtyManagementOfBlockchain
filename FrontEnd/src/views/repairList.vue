@@ -6,15 +6,19 @@ const list = ref([])
 
 const role = localStorage["role"]
 
+const loading = ref(false)
+
 const init = async() => {
     let i = 0;
+    loading.value = true;
+    let _list = []
     while(true){
         const data = await RRC.repairRequests(i)
         i++;
         if(data.length == 1){
             break;
         }
-        list.value.unshift({
+        _list.unshift({
             owner: data[0],
             repairType: data[1],
             description: data[2],
@@ -23,6 +27,8 @@ const init = async() => {
             timer: new Date()
         })
     }
+    list.value = _list
+    loading.value = false
 }
 
 
@@ -31,7 +37,7 @@ init()
 </script>
 
 <template>
-    <el-timeline>
+    <el-timeline v-loading="loading">
       <el-timeline-item v-for="(value, index) in list" :key="index" :timestamp="value.timer" placement="top">
         <el-card>
           <h4>上报人：{{ value.owner }}</h4>

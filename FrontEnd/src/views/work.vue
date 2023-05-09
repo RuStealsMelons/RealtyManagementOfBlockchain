@@ -11,9 +11,11 @@ const role = localStorage["role"]
 const dialogVisible = ref(false)
 const MPKs = ref([])
 const assignTmp = reactive({acceptIndex: -1, acceptArrIndex: -1, MPKIndex: -1})
+const loading = ref(false);
 
 const init = async() => {
     let i = 0;
+    let _list = []
     while(true){
         const data = await RRC.repairRequests(i)
         i++;
@@ -21,7 +23,7 @@ const init = async() => {
             break;
         }
         if(data[4] == "待处理" || data[4] == "处理中" || data[4] == "待分派"){
-            list.value.unshift({
+            _list.unshift({
                 owner: data[0],
                 repairType: data[1],
                 description: data[2],
@@ -32,10 +34,10 @@ const init = async() => {
             })
         }
     }
+    list.value = _list
     i = 0;
     while(true){
         const data = await PMS.maintenancePersonnelKeys(i)
-        console.log(data)
         i++;
         if(data[0].length != 42){
             break;
@@ -80,7 +82,7 @@ init()
 </script>
 
 <template>
-  <el-table :data="list" style="width: 100%">
+  <el-table v-loading="loading" :data="list" style="width: 100%" >
     <el-table-column prop="repairType" label="维修类型" width="100" />
     <el-table-column prop="description" label="损坏类容" width="180" />
     <el-table-column prop="urgency" label="紧急程度" />

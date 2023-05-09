@@ -1,6 +1,7 @@
 <script setup>
 import {reactive} from 'vue'
 import RRC from '../api/RepairRequestContract'
+import { ElMessage } from 'element-plus'
 
 const repairFrom = reactive({
     "address": localStorage["privateKey"],
@@ -33,6 +34,13 @@ const urgencys = [
 const submit = async () => {
     // _owner, _repairType, _description, _urgency
     let data = await RRC.submitRepairRequest(repairFrom.address, repairFrom.repairType, repairFrom.description, repairFrom.urgency)
+    if(data.statusOK == true){
+        
+        ElMessage.success("维修上报完成！");
+        repairFrom.repairType = ""
+        repairFrom.description = ""
+        repairFrom.urgency = ""
+    }
 }
 
 </script>

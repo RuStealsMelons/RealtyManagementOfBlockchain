@@ -8,7 +8,7 @@ import submitRepair from '../views/submitRepair.vue'
 import repairList from '../views/repairList.vue'
 import work from '../views/work.vue'
 import repair from '../views/repair.vue'
-
+import audit from '../views/audit.vue'
 
 const routes = [
   {
@@ -35,6 +35,10 @@ const routes = [
         {
             path: 'repair',
             component: repair,
+        },
+        {
+          path: 'audit',
+          component: audit,
         }
     ]
   },
