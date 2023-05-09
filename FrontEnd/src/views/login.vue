@@ -51,6 +51,7 @@ const toRegister = () => {
         </el-card>
     </div>
     
+    
 </template>
 
 <style scoped>
